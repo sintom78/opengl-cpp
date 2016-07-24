@@ -1,0 +1,16 @@
+#version 120
+
+// Input vertex data, different for all executions of this shader.
+attribute vec3 vertexPosition_modelspace;
+
+// Output data ; will be interpolated for each fragment.
+varying vec2 UV;
+
+uniform mat4 ModelM;
+uniform mat4 VP;
+
+void main(){
+        gl_Position =  ModelM * VP * vec4(vertexPosition_modelspace,1);
+	UV = (vertexPosition_modelspace.xy+vec2(1,1))/2.0;
+}
+
